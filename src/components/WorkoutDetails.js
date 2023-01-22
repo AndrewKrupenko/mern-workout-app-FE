@@ -1,6 +1,8 @@
 import React from "react";
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { formatDistanceToNow } from "date-fns";
+
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { DELETE_WORKOUT } from "../actions";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
@@ -13,7 +15,7 @@ const WorkoutDetails = ({ workout }) => {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_WORKOUT", payload: json });
+      dispatch({ type: DELETE_WORKOUT, payload: json });
     }
   };
 
