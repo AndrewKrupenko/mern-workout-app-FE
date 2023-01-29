@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
-import { CREATE_WORKOUT, DELETE_WORKOUT, SET_WORKOUTS } from "../actions";
+import { CREATE_WORKOUT, DELETE_WORKOUT, SET_WORKOUTS } from "actions";
 
 export const WorkoutsContext = createContext();
 

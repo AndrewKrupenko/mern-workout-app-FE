@@ -1,8 +1,8 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-import { DELETE_WORKOUT } from "../actions";
+import { useWorkoutsContext } from "hooks/useWorkoutsContext";
+import { DELETE_WORKOUT } from "actions";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
