@@ -1,13 +1,16 @@
 import { useAuthContext } from "hooks/useAuthContext";
-import { LOGOUT } from "actions";
+import { useWorkoutsContext } from "hooks/useWorkoutsContext";
+import { LOGOUT, SET_WORKOUTS } from "actions";
 
 export const useLogout = () => {
-  const { dispatch } = useAuthContext();
+  const { dispatch: authDispatch } = useAuthContext();
+  const { dispatch: workoutsDispatch } = useWorkoutsContext();
 
   const logout = () => {
     localStorage.removeItem("user");
 
-    dispatch({ type: LOGOUT });
+    authDispatch({ type: LOGOUT });
+    workoutsDispatch({ type: SET_WORKOUTS, payload: [] });
   };
 
   return { logout };

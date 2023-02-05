@@ -7,7 +7,7 @@ import { useAuthContext } from "hooks/useAuthContext";
 import { SET_WORKOUTS } from "actions";
 
 const Home = () => {
-  const { workouts, dispatch } = useWorkoutsContext();
+  const { workouts, isLoading, dispatch } = useWorkoutsContext();
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -32,13 +32,18 @@ const Home = () => {
     // eslint-disable-next-line
   }, [user]);
 
+  if (isLoading) return <h2>Loading...</h2>;
+
   return (
     <div className="home">
       <div className="workouts">
-        {workouts &&
+        {workouts && workouts.length ? (
           workouts.map((workout) => (
             <WorkoutDetails key={workout._id} workout={workout} />
-          ))}
+          ))
+        ) : (
+          <h2>There are no workouts yet</h2>
+        )}
       </div>
       <WorkoutForm />
     </div>
